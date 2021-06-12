@@ -3,36 +3,46 @@ import { WeatherResponse } from "../global/interface";
 import styled from "styled-components";
 
 interface IWeatherInfo {
-  data: WeatherResponse;
+  data?: WeatherResponse;
+  is_loading: boolean;
 }
 
-const WeatherInfo = ({ data }: IWeatherInfo): JSX.Element => (
-  <Container>
-    <LocationInformation>
-      <Key>Name: </Key>
-      <Value>{data.location.name}</Value>
-      <Key>Country: </Key>
-      <Value>{data.location.country}</Value>
-      <Key>Local Time: </Key>
-      <Value>{data.location.localtime}</Value>
-    </LocationInformation>
-    <Space />
-    <CurrentInformation>
-      <Key>Temperature: </Key>
-      <Value>{data.current.temp_c}</Value>
-      <Key>Condition: </Key>
-      <Value>{data.current.condition.text}</Value>
-      <Key>Wind(kph): </Key>
-      <Value>{data.current.wind_kph}</Value>
-      <Key>Precipitation(mm): </Key>
-      <Value>{data.current.precip_mm}</Value>
-      <Key>Humidity: </Key>
-      <Value>{data.current.humidity}</Value>
-      <Key>Feels like: </Key>
-      <Value>{data.current.feelslike_c}</Value>
-    </CurrentInformation>
-  </Container>
-);
+const WeatherInfo = ({ data, is_loading }: IWeatherInfo): JSX.Element => {
+  if (is_loading) return <div>loading..</div>;
+  else {
+    if (data) {
+      return (
+        <Container>
+          <LocationInformation>
+            <Key>Name: </Key>
+            <Value>{data.location.name}</Value>
+            <Key>Country: </Key>
+            <Value>{data.location.country}</Value>
+            <Key>Local Time: </Key>
+            <Value>{data.location.localtime}</Value>
+          </LocationInformation>
+          <Space />
+          <CurrentInformation>
+            <Key>Temperature: </Key>
+            <Value>{data.current.temp_c}</Value>
+            <Key>Condition: </Key>
+            <Value>{data.current.condition.text}</Value>
+            <Key>Wind(kph): </Key>
+            <Value>{data.current.wind_kph}</Value>
+            <Key>Precipitation(mm): </Key>
+            <Value>{data.current.precip_mm}</Value>
+            <Key>Humidity: </Key>
+            <Value>{data.current.humidity}</Value>
+            <Key>Feels like: </Key>
+            <Value>{data.current.feelslike_c}</Value>
+          </CurrentInformation>
+        </Container>
+      );
+    } else {
+      return <div>FAIL</div>;
+    }
+  }
+};
 
 const Container = styled.div`
   display: flex;

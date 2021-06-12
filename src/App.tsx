@@ -1,7 +1,8 @@
 import React from "react";
+import WeatherInfo from "./containers/WeatherInfo";
 
 function App() {
-  return <div>Hello</div>;
+  return <WeatherInfo />;
 }
 
 export default App;
