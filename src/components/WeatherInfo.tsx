@@ -46,19 +46,21 @@ const WeatherInfo = ({ data, is_loading }: IWeatherInfo): JSX.Element => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  background-color: "#4DCA9A";
+  background-color: #4dca9a;
 `;
 
 const LocationInformation = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  background-color: "#AFAFAF";
+  background-color: #afafaf;
 `;
 
 export const CurrentInformation = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: #ffc62a;
 `;
