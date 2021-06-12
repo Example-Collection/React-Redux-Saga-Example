@@ -1,5 +1,5 @@
 import React from "react";
-import { WeatherResponse } from "../globals/interface";
+import { WeatherResponse } from "../global/interface";
 
 interface IWeatherInfo {
   getApi: () => void;
