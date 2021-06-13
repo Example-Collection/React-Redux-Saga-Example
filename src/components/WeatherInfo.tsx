@@ -14,27 +14,45 @@ const WeatherInfo = ({ data, is_loading }: IWeatherInfo): JSX.Element => {
       return (
         <Container>
           <LocationInformation>
-            <Key>Name: </Key>
-            <Value>{data.location.name}</Value>
-            <Key>Country: </Key>
-            <Value>{data.location.country}</Value>
-            <Key>Local Time: </Key>
-            <Value>{data.location.localtime}</Value>
+            <KeyValueContainer>
+              <Key>Name:&nbsp;</Key>
+              <Value>{data.location.name}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Country:&nbsp;</Key>
+              <Value>{data.location.country}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Local Time:&nbsp;</Key>
+              <Value>{data.location.localtime}</Value>
+            </KeyValueContainer>
           </LocationInformation>
           <Space />
           <CurrentInformation>
-            <Key>Temperature: </Key>
-            <Value>{data.current.temp_c}</Value>
-            <Key>Condition: </Key>
-            <Value>{data.current.condition.text}</Value>
-            <Key>Wind(kph): </Key>
-            <Value>{data.current.wind_kph}</Value>
-            <Key>Precipitation(mm): </Key>
-            <Value>{data.current.precip_mm}</Value>
-            <Key>Humidity: </Key>
-            <Value>{data.current.humidity}</Value>
-            <Key>Feels like: </Key>
-            <Value>{data.current.feelslike_c}</Value>
+            <KeyValueContainer>
+              <Key>Temperature:&nbsp;</Key>
+              <Value>{data.current.temp_c}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Condition:&nbsp;</Key>
+              <Value>{data.current.condition.text}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Wind(kph):&nbsp;</Key>
+              <Value>{data.current.wind_kph}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Precipitation(mm):&nbsp;</Key>
+              <Value>{data.current.precip_mm}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Humidity:&nbsp;</Key>
+              <Value>{data.current.humidity}</Value>
+            </KeyValueContainer>
+            <KeyValueContainer>
+              <Key>Feels like:&nbsp;</Key>
+              <Value>{data.current.feelslike_c}</Value>
+            </KeyValueContainer>
           </CurrentInformation>
         </Container>
       );
@@ -63,6 +81,10 @@ export const CurrentInformation = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #ffc62a;
+`;
+
+const KeyValueContainer = styled.div`
+  display: flex;
 `;
 
 const Key = styled.div`
