@@ -1,9 +1,6 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { API, API_KEY } from "./settings";
 import { WeatherResponse } from "./interface";
-const api = axios.create({
-  baseURL: API,
-});
 
 const config: AxiosRequestConfig = {
   params: {
@@ -12,7 +9,12 @@ const config: AxiosRequestConfig = {
   },
 };
 
-export const getWeather = async (): Promise<AxiosResponse<WeatherResponse>> => {
-  const response = await api.get("", config);
-  return response;
+const Axios = axios.create(config);
+
+export const getWeather = async (): Promise<WeatherResponse> => {
+  const response = await Axios({
+    url: `${API}`,
+    method: "GET",
+  });
+  return response.data;
 };
