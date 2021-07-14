@@ -1,16 +1,17 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { getWeather } from "../global/api";
 import { WeatherResponse } from "../global/interface";
+import { setData, setLoading } from "./slice";
 
 function* getWeatherSaga() {
-  yield put({ type: "weather/setLoading", payload: true });
+  yield put(setLoading(true));
   try {
     const response: WeatherResponse = yield call(getWeather);
-    yield put({ type: "weather/setData", payload: response });
+    yield put(setData(response));
   } catch (e) {
     console.log(e);
   } finally {
-    yield put({ type: "weather/setLoading", payload: false });
+    yield put(setLoading(false));
   }
 }
 

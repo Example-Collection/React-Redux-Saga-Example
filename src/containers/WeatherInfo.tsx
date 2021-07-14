@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import WeatherInfo from "../components/WeatherInfo";
 import useRootState from "../global/useRootState";
 import styled from "styled-components";
-
 const WeatherInfoContainer = (): JSX.Element => {
   const dispatch = useDispatch();
   const is_loading = useRootState((state) => state.weather.is_loading);
